@@ -1,0 +1,16 @@
+# Arquivos locais e credenciais
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+*.pem
+*.key
+
+# Dependências e ferramentas
+node_modules/
+.wrangler/
+coverage/
+*.log
