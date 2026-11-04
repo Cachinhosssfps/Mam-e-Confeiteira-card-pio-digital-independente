@@ -1,0 +1,119 @@
+const CATEGORIES = [
+  { id: "destaques", name: "🔥 Destaques", icon: "⭐", items: [
+    { name: "Marmita Brownie - Ferrero Rocher", desc: "Contém um quadrado de brownie, uma camada de recheio de brigadeiro gourmet e nutella. Finalizado com castanhas trituradas.", price: 20.9, img: "assets/produtos/e0d9c36b00c8cce05d0990605de6c0e2.jpeg", badge: "oferta" },
+    { name: "Marmita Brownie - Ninho c/ nutella", desc: "Contém um quadrado de brownie, uma camada de recheio de ninho, finalizado com muita Nutella.", price: 20.9, img: "assets/produtos/fd45cf7f8f43b3d0c2e2d682d1b704d8.jpeg", badge: "oferta" },
+    { name: "Delícia Crocante 110ml", desc: "Contém uma camada de doce de leite, uma camada de creme moça, uma camada de brigadeiro gourmet, biscoito maisena intercalado entre as camadas, finalizado com crocante de amendoim.", price: 13, img: "assets/produtos/051e75490aad94bd34551322a04accc4.jpeg", badge: "oferta" },
+  ]},
+  { id: "brownies", name: "Brownies", icon: "🍫", items: [
+    { name: "Afogado de Brownie - 250ml", desc: "Contém um leve creme de ninho, pedaços de brownie super macio e finalizado com doce de leite artesanal.", price: 17.99, img: "assets/produtos/03ed8f79bd350a0a8b34195f2f46e40d.jpeg" },
+    { name: "Marmita Brownie - Ferrero Rocher", desc: "Contém um quadrado de brownie, uma camada de recheio de brigadeiro gourmet e nutella. Finalizado com castanhas trituradas.", price: 20.9, img: "assets/produtos/e0d9c36b00c8cce05d0990605de6c0e2.jpeg", badge: "oferta" },
+    { name: "Marmita Brownie - Ninho c/ nutella", desc: "Contém um quadrado de brownie, uma camada de recheio de ninho, finalizado com muita Nutella.", price: 20.9, img: "assets/produtos/fd45cf7f8f43b3d0c2e2d682d1b704d8.jpeg", badge: "oferta" },
+    { name: "COLHER", desc: "", price: 0, img: "assets/produtos/d6892423535f9af11ef2dfaf212d2075.webp" },
+    { name: "FACA", desc: "", price: 0, img: "assets/produtos/31e191ca48ddd7687d7f9689829c6f15.jpeg" },
+  ]},
+  { id: "combos", name: "Combos", icon: "🍱", items: [
+    { name: "Combo Empadão", desc: "Contém 1 empadão + 1 bolo no pote + 1 coquinha 200ml. Deixe na observação o sabor do bolo no pote. Dica: caso queira comer o empadão quentinho, retire da marmita e esquente por 60seg no microondas =)", price: 30.99, img: "assets/produtos/ba555f9cd002b66928ff58c38ea175fe.jpeg" },
+    { name: "Combo Coxinha", desc: "Contém 1 coxinha frango c\\ requeijão + 1 bolo no pote + 1 coquinha 200ml. Deixe na observação o sabor do bolo no pote.", price: 27.99, img: "assets/produtos/43193abda608e42999eb920cc1c54522.jpeg" },
+    { name: "Combo Enroladinho Salsicha", desc: "Contém 1 enroladinho de salsicha + 1 bolo no pote + 1 coquinha 200ml. Deixe na observação o sabor do bolo no pote.", price: 27.99, img: "assets/produtos/6aaf7c59eb338614cd62e5820659b5ee.jpeg" },
+    { name: "Combo Enroladinho Queijo c/ Presunto", desc: "Contém 1 enroladinho de queijo c/ presunto + 1 bolo no pote + 1 coquinha 200ml. Deixe na observação o sabor do bolo no pote.", price: 27, img: "assets/produtos/09bf149e9abf7e2e0f549aad484ec092.jpeg" },
+  ]},
+  { id: "diversos", name: "Diversos", icon: "🍮", items: [
+    { name: "Pudim 140ml", desc: "Pudim de leite condensado bem cremoso.", price: 12, img: "assets/produtos/1807587112f55678cefe1c341023844f.jpeg" },
+    { name: "Banoffe 250ml", desc: "Contém uma camada de biscoito triturado, uma camada de doce de leite, pedaços de bananas in natura, calda caramelizada, uma camada de creme moça, chantininho finalizado com canela.", price: 17, img: "assets/produtos/aafdbc144cb7ae675f1ebce0a43a7e18.jpeg" },
+    { name: "Bolo de Cenoura 250ml", desc: "Contém duas camadas de bolo de cenoura e duas camadas do nosso brigadeiro cremoso. Dica: colocar de 10 em 10 segundos no microondas até ficar quentinho para consumo.", price: 18, img: "assets/produtos/d3acffe799c20f780ac844427fd6e514.jpeg" },
+  ]},
+  { id: "salgados", name: "Salgados", icon: "🥟", items: [
+    { name: "Empadão de Frango", desc: "Contém massa de empadão bem levinha, frango desfiado bem molhadinho, requeijão, finalizado com mussarela gratinada. Dica: caso queira comer o empadão quentinho, retire da marmita e esquente por 60seg no microondas =)", price: 16.99, img: "assets/produtos/deb8c15c85ab5e7f7d78e619d7a073ff.jpeg" },
+    { name: "Coxinha de Frango COM requeijão", desc: "Contém nossa massa perfeita de coxinha, frango desfiado bem temperado, requeijão, finalizada na farinha panko.", price: 12.99, img: "assets/produtos/8a9fcc823f55af7053aee6594dbfac89.jpeg", star: true },
+    { name: "Coxinha Carne Seca c/ Requeijão", desc: "Contém massa de coxinha bem macia, carne seca desfiada e requeijão. Finalizada na farinha panko.", price: 14.99, img: "assets/produtos/f23f250054baabbcb9ba4a220646fdfc.jpeg" },
+    { name: "Coxinha Cupim c/ Requeijão", desc: "Contém massa de coxinha bem macia, cupim assado desfiada e requeijão. Finalizada na farinha panko.", price: 14.99, img: "assets/produtos/ecbdcaf0487f7667f3f9fcbf6e77c7b4.jpeg" },
+    { name: "Enroladinho de Salsicha", desc: "Contém massa salgado frito, salsicha com queijo.", price: 12, img: "assets/produtos/63f7063f90253f7cba23b615616b12eb.jpeg" },
+    { name: "Enroladinho de Queijo c/ Presunto", desc: "Contém massa de salgado frito, queijo mussarela e presunto", price: 12, img: "assets/produtos/d4e775b242a89ba28da297eaca70a894.jpeg" },
+    { name: "Torta Salgada", desc: "Contém uma camada de pão de forma, requeijão, recheio de frango cremoso (frango, azeitona, cenoura ralada, uva passa e maionese) e purê de batata. Finalizada com batata palha.", price: 15, img: "assets/produtos/adfda9b216576d7b6d1ff0386b7702b9.jpeg" },
+  ]},
+  { id: "sacoles", name: "Sacolés Gourmet", icon: "🍧", items: [
+    { name: "Sacolé Gourmet (Ninho c/ Nutella) - 160g", desc: "Sacolé gourmet SUUUUPER HIPER MEGA cremoso de ninho e por nutella pura.", price: 9.99, img: "assets/produtos/eeed65d3e92832bc6b79f48079dca6b6.jpeg" },
+    { name: "Sacolé Gourmet (Tortinha de limão) 160g", desc: "Sacolé gourmet SUUUUPER HIPER MEGA cremoso, composto por chocolate branco com biscoito maisena e mousse de limão.", price: 9.99, img: "assets/produtos/05a8e346aee86677d267e98e4a5360fc.jpeg", badge: "novidade" },
+  ]},
+  { id: "bolos-pote", name: "Bolos no Pote", icon: "🥣", items: [
+    { name: "Bolo no Pote - Brigadeiro c/ Morangos 200ml", desc: "Contém uma camada brigadeiro gourmet cremoso, uma camada de massa cacau, morangos frescos, finalizado com creme de ninho", price: 14.99, img: "assets/produtos/67f321dd993aaf0c54d559f092882f99.jpeg" },
+    { name: "Bolo no Pote - Brigadeiro Gourmet 200ml", desc: "Contém duas camadas de brigadeiro gourmet bem cremoso, uma camada de massa cacau bem molhadinha, finalizado com gotas de chocolate", price: 14.99, img: "assets/produtos/6479ed905866601334f0be1de411e010.jpeg" },
+    { name: "Bolo no Pote - Dois Amores 200ml", desc: "Contém uma camada de brigadeiro branco, uma da camada de massa cacau e outra de massa baunilha, finalizado com brigadeiro gourmet", price: 14.99, img: "assets/produtos/a001ab3361cc994ecf46eb27692a222e.jpeg" },
+    { name: "Bolo no Pote - Ninho com Morangos 200ml", desc: "Contém duas camadas de creme de ninho bem levinho e uma camada de bolo baunilha com pedaços de morango", price: 14.99, img: "assets/produtos/862ea3c05d9c1e89a8f2c906b09d5a9b.jpeg" },
+    { name: "Bolo no Pote - Red Velvet 200ml", desc: "Contém massa redvelvet, creme moça e geleia de morango", price: 14.99, img: "assets/produtos/54280cb91c6e8f6bf2c39d33bc094fbf.jpeg" },
+    { name: "Bolo no pote - Prestígio 200ml", desc: "Contém brigadeiro preto, massa cacau e recheio de beijinho cremoso.", price: 14.99, img: "assets/produtos/52ad34d27c8fd903ce667d5e1f7ef004.jpeg" },
+  ]},
+  { id: "copos", name: "Copos da Felicidade", icon: "🥤", items: [
+    { name: "Explosão Ferrero - 150ml", desc: "Contém brigadeiro, gotas de chocolate nobre, nutella, castanhas picadas e brownie. Finalizado com um ferrero rocher.", price: 21.9, img: "assets/produtos/b3c4874b15c2b0853db14e17e062e4f2.jpeg" },
+    { name: "Raffaelo - 150ml", desc: "Contém creme de ninho bem cremoso, beijinho, creme moça e pedaços de brownies. Finalizado com coco e um docinho raffaello.", price: 18, img: "assets/produtos/dfb6405d1e4a627d9c6e401310b7b970.jpeg" },
+    { name: "Kinder Bueno - 150ml", desc: "Contém brigadeiro gourmet bem cremoso, mousse de chocolate meio amargo, creme moça, pedaços de brownie, finalizado com kinder bueno.", price: 18, img: "assets/produtos/9245ece72094dd6e106e5b98e3d0e7b2.jpeg" },
+    { name: "Kitkat - 150ml", desc: "Contém pedaços de brownie, brigadeiro, mousse de chocolate, amendoim. Finalizado com brigadeiro e kitkat.", price: 18, img: "assets/produtos/070b44c15168b20c30571f86e6b04e4a.jpeg" },
+  ]},
+  { id: "paves", name: "Pavês", icon: "🍮", items: [
+    { name: "Delícia Crocante 110ml", desc: "Contém uma camada de doce de leite, uma camada de creme moça, uma camada de brigadeiro gourmet, biscoito maisena intercalado entre as camadas, finalizado com crocante de amendoim.", price: 13, img: "assets/produtos/051e75490aad94bd34551322a04accc4.jpeg", badge: "oferta" },
+    { name: "Pavê de Ninho c/ Nutella", desc: "Creme de ninho, biscoito maisena, creme moça e Nutella.", price: 19, img: "assets/produtos/c3c448e10f52003e8d31b3b06d78540b.jpeg" },
+    { name: "Pavê Ninho c/ Ganache ao Leite", desc: "Contém creme de ninho, creme moça, ganache de chocolate ao leite e biscoito maisena entre as camadas.", price: 19, img: "assets/produtos/bbb807bccc5ccfaa814ca8886815862f.jpeg" },
+  ]},
+  { id: "delicias-pote", name: "Delícias no Pote", icon: "🍑", items: [
+    { name: "Delícia de Pêssego", desc: "Contém creme de ninho, pêssego, creme moça e chantininho.", price: 12, img: "assets/produtos/1369b8f8e836da3add0d81947cd97f80.jpeg" },
+    { name: "Delícia de Abacaxi", desc: "Contém creme de ninho, abacaxi, creme moça e chantininho.", price: 12, img: "assets/produtos/04e2ed9e220df70b5a3df813451c198e.jpeg" },
+  ]},
+  { id: "mini-bolos", name: "Mini Bolos", icon: "🎂", items: [
+    { name: "Mini Bolo Chocolatudo (serve em média 3/4 pessoas- 10cm)", desc: "Contém massa cacau molhadinha e recheio de brigadeiro ao leite. Finalizado com brigadeiros e morangos.", price: 45.9, img: "assets/produtos/a4ca709421145af89f96b07dfd0a42f9.jpeg" },
+  ]},
+  { id: "vulcoes", name: "Bolos Vulcões / Inteiros", icon: "🌋", items: [
+    { name: "Bolo Doce de Leite 16cm", desc: "Massa baunilha fofinha e recheio de doce de leite artesanal.", price: 35.9, img: "assets/produtos/7aee3fc5fa17d5551e64d6c1b8fbdfa3.jpeg" },
+    { name: "Bolo Doce de Leite c/ Coco 16cm", desc: "Massa branca fofinha, doce de leite artesanal c/ coco.", price: 36.9, img: "assets/produtos/1ebf0f93ce99229e77b401be94bbaba3.jpeg" },
+    { name: "Caseirinho Baunilha 16cm 5/6 fatias", desc: "Passou um café? Pede um bolinho <3 Massa baunilha amanteigada fofinha e saborosa sem recheio!", price: 17, img: "assets/produtos/5ae60f0d452c1326a05711033811a059.jpeg" },
+    { name: "Vulcão Duo - 16cm (7/8 porções)", desc: "Contém massa fofinha de chocolate. cobertura de chocolate preto e branco.", price: 40.9, img: "assets/produtos/db6753f1ebac7da9e4d28069d6852fab.jpeg" },
+    { name: "Vulcão Cenoura - 16cm (7/8 porções)", desc: "Cenoura com brigadeiro", price: 40.9, img: "assets/produtos/4e187e25b05e2fead09068a922e0991f.jpeg" },
+    { name: "Vulcão Chocolate - 16cm (7/8 porções)", desc: "Contém massa fofinha de chocolate. cobertura de chocolate.", price: 40.9, img: "assets/produtos/2af32faf59aec0515f8e40ce2b1a0760.jpeg" },
+    { name: "Vulcão Crème Brulee c/ geleia de morango - 16cm (7/8 porções)", desc: "Contém massa baunilha, geleia de morango, brigadeiro branco com crosta de açúcar queimado por maçarico.", price: 40.9, img: "assets/produtos/2f7e5d7eaba7a912953591a2c57f2d6f.jpeg" },
+    { name: "Vulcão Ninho com Nutella - 16cm (7/8 porções)", desc: "Contém massa baunilha, bastante nutella ao meio e recheio de ninho. Finalizado com ninho e nutella", price: 46.9, img: "assets/produtos/7390c69ee889d7c32a490a0bcb7f5829.jpeg" },
+    { name: "Vulcão Red Velvet - 16cm (7/8 porções)", desc: "Contém massa de redvelvet fofinha, geleia de morango artesanal (ao meio). Finalizado com recheio de ninho", price: 40.9, img: "assets/produtos/57ac5d00bbe0872e58d0b764c8a538e1.jpeg" },
+  ]},
+  { id: "presentes", name: "Sacola Presente", icon: "🎁", items: [
+    { name: "Sacola Tam P", desc: "Presenteie alguém especial.", price: 2.99, img: "assets/produtos/f8961d37c8d421f3f5efc3f7347ab9bb.jpeg" },
+    { name: "CAIXA PARA PRESENTEAR", desc: "Comporta de 7 a 10 itens da sua escolha para presentear quem você ama. ADICIONE ELA NO SEU CARRINHO E ESCOLHA OS ITENS SEPARADAMENTE E NOS MONTAREMOS PARA VOCÊ. (Incluiu cartão De/Para, celofane e laço de cetim).", price: 10, img: "assets/produtos/f0baf656701cc30be75b8e0b2bf6e0ce.jpeg" },
+  ]},
+  { id: "bebidas", name: "Bebidas", icon: "🥤", items: [
+    { name: "Água com Gás 500ml", desc: "", price: 5, img: "assets/produtos/0719143f7ca75ad617b2f68ee3f46995.jpeg" },
+    { name: "Água sem Gás 500ml", desc: "", price: 4, img: "assets/produtos/9a256da70e150edd3489d1ffdece25f2.jpeg" },
+    { name: "Coca Cola 200ml", desc: "Coca Cola 200ml", price: 3.5, img: "assets/produtos/07e18049f5c37cddb28df15a75fb6363.jpeg" },
+    { name: "Coca-cola ZERO 200ml", desc: "Coca cola de 200 ml", price: 3.5, img: "assets/produtos/904eac3fba7534a4d6faf1038e788335.jpeg" },
+    { name: "Guaracamp 290ml", desc: "", price: 4, img: "assets/produtos/d50bd15b8e3d0b66ca3ccf3d135eeff0.jpeg" },
+    { name: "Guaraná Antactica 1L", desc: "Guaraná Antactica UM LITRO.", price: 9, img: "assets/produtos/3816a22b7c65343edb79df3d8823af32.webp" },
+    { name: "Coca Cola 2L", desc: "Coca cola de DOIS LITROS.", price: 15, img: "assets/produtos/cc8388e8fbf2234f4adf7ac340e48c33.jpeg" },
+  ]},
+];
+
+// Produtos exclusivos do agendamento — bolos e sobremesas grandes que precisam de tempo de
+// preparo, por isso não ficam disponíveis pra "pronta entrega" (mesma separação que a loja
+// já usa no Yooga).
+const CATEGORIES_AGENDAMENTO = [
+  { id: "naked-cake", name: "Naked Cake 15cm (serve em média 15 fatias)", icon: "🎂", items: [
+    { name: "Naked Cake - Chocolate 15cm", desc: "Contém 1 bolo Naked Cake no acetato, composto por 3 camadas de massa cacau, 2 camadas de recheio de brigadeiro ao leite cremoso. Finalizado com chantilly de chocolate e 6 brigadeiros belga.", price: 129.9, img: "assets/produtos/ab7fe4653db6b8dceaa6f414dce0c8aa.jpeg" },
+    { name: "Naked Cake - Ninho c/ morangos 15cm", desc: "Contém 1 bolo Naked Cake no acetato, composto por 3 camadas de massa baunilha, 2 camadas de recheio de ninho e pedaços de morangos frescos. Finalizado com chantininho e brigadeiros de ninho e morangos.", price: 129.9, img: "assets/produtos/4f2af117ffc5985ecb2eed599ac7527f.jpeg" },
+    { name: "Naked Cake - Redvelvet 15cm", desc: "Contém 1 bolo Naked Cake no acetato, composto por 3 camadas de massa redvelvet, 2 camadas de recheio de ninho e geleia de morango. Finalizado com chantininho e brigadeiros de ninho e morangos.", price: 129.9, img: "assets/produtos/d873bc231c236110d647f2fbf8057d5b.jpeg" },
+    { name: "Naked Cake - Casadinho de Doce de Leite 15cm", desc: "Contém 1 bolo Naked Cake no acetato, composto por 3 camadas de massa baunilha, 1 camada de recheio de ninho com crocante de amendoim e 1 camada de recheio de doce de leite artesanal. Finalizado com chantininho e brigadeiros de ninho.", price: 129.9, img: "assets/produtos/5bbd2e1dfe57628f6f3894890fc7d027.jpeg" },
+  ]},
+  { id: "sobremesas-travessa", name: "Sobremesas na Travessa", icon: "🍮", items: [
+    { name: "Banoffe - Travessa 1,5l", desc: "Contém uma camada de biscoito triturado, uma camada de doce de leite, pedaços de bananas in natura, calda caramelizada, uma camada de creme moça, chantininho finalizado com canela.", price: 109.9, img: "assets/produtos/9c8c458dc997b7afead524ba23d657ec.jpeg" },
+    { name: "Morangoffe - Travessa 1,5l", desc: "Contém biscoito triturado, uma camada generosa de creme moça, pedaços de morangos frescos, finalizado com chantininho.", price: 109.9, img: "assets/produtos/43a8bb77ff7e87c30a81c02382638fb8.jpeg" },
+    { name: "Pavê - Travessa 1,5l", desc: "Contém creme de ninho, creme moça, ganache de chocolate ao leite e biscoito maisena entre as camadas.", price: 109.9, img: "assets/produtos/fe072f084f75a3f52c4183534ece1bd6.jpeg" },
+    { name: "Pavê Crocante - Travessa 1,5l", desc: "Contém uma camada de doce de leite, uma camada de creme moça, uma camada de brigadeiro gourmet, biscoito maisena intercalado entre as camadas, finalizado com crocante de amendoim.", price: 109.9, img: "assets/produtos/91d8478fdbb1db35bb5386df71a4ae33.jpeg" },
+  ]},
+  { id: "bolos-gelados-travessa", name: "Bolos Gelados na Travessa", icon: "🍰", items: [
+    { name: "Bolo Gelado - Ninho c/ geleia de morango (Travessa 1,5l)", desc: "Nosso bolo gelado pesando quase 2kg disponível na travessa em tamanho família. Composto por massa baunilha, recheio de ninho, chantininho e geleia de morango.", price: 110, img: "assets/produtos/c221ddc9daba9c125ab667c7820e3639.jpeg" },
+    { name: "Bolo Gelado - Coco (Travessa 1,5l)", desc: "Nosso bolo gelado pesando quase 2kg disponível na travessa em tamanho família. Composto por massa baunilha, recheio de beijinho cremoso.", price: 110, img: "assets/produtos/ec0ec6d3ff5c26af67eaaac1bb546783.jpeg" },
+  ]},
+  { id: "tortas-inteiras", name: "Tortas Inteiras — 20cm (8/10 porções)", icon: "🥧", items: [
+    { name: "Torta Bombom de Morango", desc: "Nossa torta mais vendida disponível para sua ceia. Composta por massa de chocolate, recheio de ninho, morangos inteiros e finalizada com brigadeiro cremoso.", price: 159.9, img: "assets/produtos/0125076e16f115932fbd5cb9fc860621.jpeg" },
+    { name: "Torta Cookie", desc: "Torta cookie recheada com nutella.", price: 169.9, img: "assets/produtos/0b90ccaace3f0a559f9b46d4a9f79975.jpeg" },
+    { name: "Torta de Limão", desc: "Nossa maravilhosa torta de limão.", price: 115.9, img: "assets/produtos/9916ed24d4a29b935d5ca93377b4422b.jpeg" },
+  ]},
+  { id: "empadao-grande", name: "Empadão — 20cm (8/10 porções)", icon: "🥧", items: [
+    { name: "Empadão Frango c/ Requeijão", desc: "Empadão composto por massa super macia, frango bem temperado e suculento, camada generosa de requeijão e tampa com a massa de empadão.", price: 85.9, img: "assets/produtos/54c810e5805ffbbabaf78fa26a94774a.jpeg" },
+    { name: "Empadão Carne Seca c/ Requeijão", desc: "Empadão composto por massa super macia, carne seca cremosa, camada generosa de requeijão e tampa com a massa de empadão.", price: 115.9, img: "assets/produtos/54c810e5805ffbbabaf78fa26a94774a.jpeg" },
+  ]},
+];
